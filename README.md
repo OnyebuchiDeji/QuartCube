@@ -51,7 +51,9 @@ Exploring Controlling a 3D Cube with Quaternions
         +   Then change which of those chosen above (by uncommenting) to be assigned to `self.eng.program`.
             *   Currently, `self.qc2` is assigned to it.
             *   Change that to be the name of whichever you want to test.
-
+>	Notice that the mouse is hidden. And from tinkering, you'll see that its
+	regularly repositioned to be in the centre.
+>    Used the chance to practice Git Hooks.
 
 ###	Screenshots
 
