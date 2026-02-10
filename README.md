@@ -16,7 +16,7 @@ Exploring Controlling a 3D Cube with Quaternions
 	*	Two Types were created:
 		1.	First Person Shooter-like camera
 		2.	Key-Controlled Look At Direction Camera.
-+	Explored affine transformation matrices, both row-vector-compatible types and theur major-vector-compatible counterparts. 
++	Explored affine transformation matrices, both row-vector-compatible types and their major-vector-compatible counterparts. 
 +	Implemented rotating cube around its axis (with functionality of rotating about custom axes), using Eulclidean methods. Implemented conditions against Gimbal lock.
 +	Implemented rotating cube around its axis (and custom axes) using quaternions. This method is immune to Gimbal lock. 
 +	To demonstrate rotating Cube using quaternions, the Key-Controlled Look At Direction Camera was used. The quaternions were used to modify the cube's orientation in real-time.
@@ -52,8 +52,9 @@ Exploring Controlling a 3D Cube with Quaternions
             *   Currently, `self.qc2` is assigned to it.
             *   Change that to be the name of whichever you want to test.
 >	Notice that the mouse is hidden. And from tinkering, you'll see that its
-	regularly repositioned to be in the centre.
->    Used the chance to practice Git Hooks.
+	regularly repositioned to be in the centre. 
+
+>    (To Me) Used the chance to practice Git Hooks.
 
 ###	Screenshots
 
