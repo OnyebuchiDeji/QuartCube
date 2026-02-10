@@ -1,0 +1,278 @@
+ /* 
+   GUARANTEED FONTS:  
+   	serif		similar to Times
+   	sans-serif	Similar to Helvetica
+   	monospace	Similar to courier
+   	cursive 	Nice handwriting style
+   	fantasy		Bad
+	"Times New Roman" is same as Times, and is default for IE
+	
+	BOX MODEL:
+	width & height = size of content area
+	padding = space around content area
+	border  = line around padding box
+	margin  = space around the border
+	Full size of element = width+padding+border+margin
+	
+	DIMENSIONS:	Pixels is actually an angular measurement
+				Convention is 96 pixels = 1 inch = 0.0213 degrees at 28 inches range
+				For text, 1pt = 1/72 inches
+				Default convention is: 1em == 16px == 0.17in == 12pt == 1pc == 4.2mm 
+*/
+
+body { 
+	background-color:	#ccc; 
+}
+
+sub { 
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+/************************************************/
+/* Basic page properties (white, 1" margins...	*/
+/************************************************/
+  div.page {				/* White page, centered, 8.5 x 11 inches, 1 inch padding */
+	display:			block;	/* Forces fixed width and height*/
+	/*padding:			96px;*/	/* One inch padding on all four sides */
+	padding:			1px 96px 96px 96px;	/* top, right, bott, left.  96 pix = 1 inch */
+	width: 				624px;	/* 6.5 inch text area width */
+	margin-left: 		auto;	/* Forces page to be centered */
+	margin-right: 		auto;
+	margin-top:			10px;
+	margin-bottom:		10px;
+	font-size:			16px;	/* Default on IE */
+	font-family: 		"Times New Roman", Times, serif; /* Default on IE */
+	/*overflow: 			auto;	/* Puts scroll bars only if necessary */
+	background:			#fff;
+	box-shadow:     	6px 6px 12px #88b;
+	/*page-break-after:	always;*/
+}
+
+/************************************************/
+/* These are for the page title, author,		*/
+/* abstract title, and horizontal rule			*/
+/************************************************/
+h1.centered{
+	text-align:			center;
+}
+
+h2.centered{
+	text-align:			center;
+}
+
+p.centered{
+	text-align:			center;
+}
+
+div.centered{
+	text-align:			center;
+}
+
+hr {
+	width: 				100%;
+	height:		 		0px;
+	border-top: 		1px solid #000;	
+}
+
+/************************************************/
+/* Table definitions							*/
+/************************************************/
+table.style1{
+	width:			100%
+}
+table.style1 td{				/*Geodetic Lat/Lon table, and 2D Rot Step1, Step2 table */
+	vertical-align: top;
+	padding-bottom: 10px;
+	/*border: 1px solid black;*/
+}
+
+table.style2{
+	width:			100%
+	/*border-collapse: collapse;*/
+}
+table.style2 td{				/* 2D Rot where: x = blah blah, y = blah blah */
+	vertical-align: top;
+	padding: 0px;
+	border: 0px solid black;
+}
+table.style3{
+	width:			100%
+	/*border-collapse: collapse;*/
+}
+table.style3 td{		/* For tables with images in them (centers text vertically)*/
+	vertical-align: middle;
+	padding: 2px 0px;		/* Vertical padding, horizontal padding */
+	border: 0px solid black;
+}
+
+code{
+	display:		block;
+	/*height:			600px;*/
+	white-space:	pre;
+	font-size:		12px;
+	font-family: 	monospace;
+	background:		#dfd;	/* Light green*/
+	overflow-x:		scroll;	/* puts horizontal scroll only if necessary */
+	overflow-y:		hidden;	/* prevents vertical scrollbar */
+	/*overflow: 		auto;	/* Puts scroll bars only if necessary */
+}
+
+span.codeComment{
+	color: blue;
+}
+span.noBreak{	/* For preventing a line break in the middle of a phrase or equation */
+	white-space: nowrap;
+}
+
+li.margin_5{	/* For adding extra space between lines in a list */
+	margin: 5px 0;
+}
+
+
+div.equation_indent{ margin-left: 40px; display: inline-block; }
+/* div.equation_indent{ margin-left: 40px; display: inline-block; vertical-align: middle; } */
+    
+div.tab_05{
+	display:		inline-block;
+	text-indent: 	5%;
+	border: 		0px solid;
+	white-space: 	nowrap;		/* Don't know why, but required for Firefox only	*/
+}
+div.tab_10{
+	display:		inline-block;
+	text-indent: 	10%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_15{
+	display:		inline-block;
+	text-indent: 	15%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_20{
+	display:		inline-block;
+	text-indent: 	20%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_25{
+	display:		inline-block;
+	text-indent: 	25%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_30{
+	display:		inline-block;
+	text-indent: 	30%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_35{
+	display:		inline-block;
+	text-indent: 	35%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_40{
+	display:		inline-block;
+	text-indent: 	40%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.tab_45{
+	display:		inline-block;
+	text-indent: 	45%;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+div.equation_label{
+	display:		inline-block;
+	float: 			right;
+	vertical-align: middle;
+	border: 		0px solid;
+	white-space: 	nowrap;
+}
+
+/************************************************/
+/* MENU style definitions						*/
+/************************************************/
+
+nav.menu ul {
+	list-style: none;			/* Gets rid of bullets from list items */
+	/*padding: 0;		*/			/* If present, left justify: otherwise center justify */
+	display: inline-block;		/* Forces following text to start on new line	*/
+	margin: 10px 0px 0px 0px;	/* top, right, bott, left */
+}
+nav.menu li {
+	float: left;				/* Forces each list item to be only as wide as necessary */
+}
+nav.menu a {
+	background: #30A6E6;		/* Background color when unselected */
+	color: #FFFFFF;				/* Font color */
+	padding: 10px 25px;			/* vertical padding, horizontal padding */
+	margin: 1px;				/* gap between buttons */
+	display: block;
+	font: bold 12px/20px sans-serif;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 8px;
+
+	
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease; 
+}
+nav.menu a.currentPage {
+	background: #0000FF;		/* Background color of current page */
+	box-shadow: 6px 6px 12px #88b;
+
+}
+nav.menu li:hover a{
+	background: #000000;	/* Background color when selected */
+}
+
+/* Standard Google ad sizes:
+   Leaderboard: 		728x90 (lots of ads available)
+   Large leaderboard: 	970x90
+   billboard: 			970x250
+*/
+
+div.leaderboard_ad {
+   	display:			block;	/* Forces fixed width and height*/
+	width: 				728px;
+	height:				90px;
+	margin-left: 		auto;	/*Forces page to be centered */
+	margin-right: 		auto;
+	margin-top:			10px;
+	margin-bottom:		10px;
+	border-width:   	1px 1px 1px 1px;
+    border-style:   	solid;
+    border-color:   	#000;	
+	background:			#8f8;
+	box-shadow:     	6px 6px 12px #aaa;
+}
+
+/************************************************/
+/* Override anything needed to print cleanly	*/
+/************************************************/
+ @media print {
+   div.leaderboard_ad {
+		display: 		none !important;
+   }
+   
+   div.page{
+		padding: 		0px;
+		box-shadow:     none;
+   }
+   
+   code{
+   	overflow-x:		hidden;	/* prevents horizontal scrollbar */
+   	overflow-y:		hidden;	/* prevents vertical scrollbar */
+	}
+}
+
+
