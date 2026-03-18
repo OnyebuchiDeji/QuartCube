@@ -53,6 +53,7 @@ class FirstCube(Program):
     def update(self):
         self.update_orientation()
         self.layer.fill(self.bg_cols[2])   #   dark slate gray
+        # self.layer.fill((255,0,0))
         self.draw_cube_v2()
     
     def remap01(self, a: float, b: float, t: float):
@@ -145,9 +146,7 @@ class FirstCube(Program):
                 # pg.draw.aaline(self.layer, col, p0, p1)
                 # pg.draw.aaline(self.layer, col, p1, p2)
                 # pg.draw.aaline(self.layer, col, p2, p0)
-                
-        self.engine_ref.screen.blit(self.layer, (0, 0))
-        
+  
     def draw_cube(self):
         """
             For each cube vertex,
@@ -183,6 +182,3 @@ class FirstCube(Program):
             pg.draw.aaline(self.layer, col, p0, p1)
             pg.draw.aaline(self.layer, col, p1, p2)
             pg.draw.aaline(self.layer, col, p2, p0)
-
-        self.engine_ref.screen.blit(self.layer, (0, 0))
-        

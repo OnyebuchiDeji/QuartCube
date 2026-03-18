@@ -66,7 +66,7 @@ class LastCube(Program):
             when looking at the cube from above, is meant to be such that the rotation
             is anticlockwise instead of clockwise.
 
-            However, the effect of the normal `rotate_y` rotates the cube in a Clockwide direction.
+            However, the effect of the normal `rotate_yaw` rotates the cube in a Clockwise direction.
             This is because this rotation matrix is not suitable for multiplication with column vectors
             but for row vectors.
 
@@ -84,13 +84,13 @@ class LastCube(Program):
             or
             `self.cube_model @= rotation_mat`
         """
-        # rotation_mat = rotate_y(45)
-        # rotation_mat @= rotate_x(22.5)
-        # rotation_mat @= rotate_z(30)
+        # rotation_mat = rotate_yaw(45)
+        # rotation_mat @= rotate_pitch(22.5)
+        # rotation_mat @= rotate_roll(30)
         
-        rotation_mat = rotate_y_column_major(45)
-        rotation_mat @= rotate_x_column_major(22.5)
-        rotation_mat @= rotate_z_column_major(30)
+        rotation_mat = rotate_yaw_column_major(45)
+        rotation_mat @= rotate_pitch_column_major(22.5)
+        rotation_mat @= rotate_roll_column_major(30)
         
         ##  wrong
         # self.cube_model = rotation_mat @ scale(1.0) @ self.cube_model
@@ -195,5 +195,4 @@ class LastCube(Program):
                 p2 = self.remap(p2[0:2], np.array(self.engine_ref.win_res))
                 #   use polygons so they can be filled!
                 pg.draw.polygon(self.layer, self.cols[3], [p0, p1, p2], width=1)
-                
-        self.engine_ref.screen.blit(self.layer, (0, 0))
+            

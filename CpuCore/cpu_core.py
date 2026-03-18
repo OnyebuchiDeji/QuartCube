@@ -12,6 +12,8 @@ from CpuCore.programs.FirstCube import FirstCube
 from CpuCore.programs.QuartCube import QuartCube
 from CpuCore.programs.QuartCube2 import QuartCube2
 from CpuCore.programs.LastCube import LastCube
+from CpuCore.programs.FirstSphere import FirstSphere
+from CpuCore.programs.MeshSphere import MeshSphere
 
 
 
@@ -21,10 +23,11 @@ class CpuCore:
         self.eng = Engine("QuartQuest", (1200, 675))
         # self.fc = FirstCube(self.eng)
         # self.qc = QuartCube(self.eng)
-        self.qc2 = QuartCube2(self.eng)
+        # self.qc2 = QuartCube2(self.eng)
         # self.lc = LastCube(self.eng)
-        self.eng.program = self.qc2
-
+        # self.fs = FirstSphere(self.eng)
+        self.ms = MeshSphere(self.eng)
+        self.eng.program = self.ms
     
     def run(self):
         self.eng.start()

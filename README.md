@@ -4,7 +4,7 @@
 ###	Why
 Exploring Controlling a 3D Cube with Quaternions
 
-###	What
+###	What 
 +	Initially planned to consist of two main methods for rendering the Cube.
 +	Each method demonstrates a unique way of drawing the 3D Cube:
 	1.	CPU-only
@@ -21,6 +21,21 @@ Exploring Controlling a 3D Cube with Quaternions
 +	Implemented rotating cube around its axis (and custom axes) using quaternions. This method is immune to Gimbal lock. 
 +	To demonstrate rotating Cube using quaternions, the Key-Controlled Look At Direction Camera was used. The quaternions were used to modify the cube's orientation in real-time.
 +	The methods utilizing just Euclidean formulas where used to predefine the cube's orientaion before rendering.
+
+### Update
++   Made updates to the rotation functions, ensuring to name them properly according to the axes they rotate.
++   Made updates to other Programs ensuring their angles were in radians before passing to a quaternion or euclidean rotational function.
++   Explained Column-Vector x Column-Major vs Row-Vector x Row-Major matrices.
++   Added functionality to draw spheres procedurally CPU-only
++   Added a Radial Camera that can rotate the scene around the origin and can zoom-in and zoom-out.
++   Created two sphere generation programs:
+    -   `FirstSphere`: Attempts to generate 3D perspective-accurate sphere. Managed to generate orthographic and perspective versions.
+        *   Sphere was drawn with points
+        *   Resolution parameters were provided
+        *   There were some errors, though, in the longitudinal and latitudinal angles for the sphere/
+    -   `Mesh Sphere`: 
+        *   Drew sphere with triangle meshes.
+        *   Fixed the longitudinal and latitudinal ranges and angles for solving points on the sphere.
 
 ###	Setup
 1.	Create and activate virtual environment (Windows):

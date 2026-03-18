@@ -101,8 +101,8 @@ class QuartCube2(Program):
         rel_xy = pg.mouse.get_rel()
         self.rel_x += rel_xy[0]
         self.rel_y += rel_xy[1]
-        yaw_angle = self.rel_x * 0.007
-        pitch_angle = self.rel_y * 0.007
+        yaw_angle = self.rel_x * 0.07
+        pitch_angle = self.rel_y * 0.07
 
         #   note the axis matches the angle
 
@@ -111,8 +111,8 @@ class QuartCube2(Program):
         # self.quart = quaternion_multiply(self.quart, quaternion_from_axis_angle((0, 1, 0), yaw_angle))
         
         #   yaw-then-pitch
-        self.quart = quaternion_from_axis_angle((0, 1, 0), yaw_angle)
-        self.quart = quaternion_multiply(self.quart, quaternion_from_axis_angle((0, 0, 1), pitch_angle))
+        self.quart = quaternion_from_axis_angle((0, 1, 0), np.radians(yaw_angle))
+        self.quart = quaternion_multiply(self.quart, quaternion_from_axis_angle((0, 0, 1), np.radians(pitch_angle)))
 
 
     def update(self):
@@ -124,6 +124,16 @@ class QuartCube2(Program):
         return (t - a) / (b - a)
 
     def remap(self, sourceVec2: np.array, targetVec2: np.array):
+        """
+            Used to remap the transformed points that are still
+            in value range -1->1 for both x and y axes to be:
+
+            -1 -> 1 (X-components) --->> New range: 0 -> width
+            -1 -> 1 (Y-components) --->> Flipped: 1 -> -1
+                                    --->> New range: 0 -> height
+            the latter, for the y-components, is to compensate
+            with pygame's y-axis flip
+        """
         remapedSource = Vec([self.remap01(-1, 1, sourceVec2[0]),
                                 self.remap01(1, -1, sourceVec2[1])])
         return remapedSource * targetVec2
@@ -198,5 +208,3 @@ class QuartCube2(Program):
                 p2 = self.remap(p2[0:2], np.array(self.engine_ref.win_res))
                 #   use polygons so they can be filled!
                 pg.draw.polygon(self.layer, self.cols[3], [p0, p1, p2], width=1)
-                
-        self.engine_ref.screen.blit(self.layer, (0, 0))

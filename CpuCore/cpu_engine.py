@@ -23,6 +23,8 @@ class Engine:
         self.update_time()
         if self.program != None:
             self.program.update()
+            self.screen.blit(self.program.layer, (0, 0))
+        
         pg.display.flip()
 
     def update_time(self):
@@ -33,7 +35,7 @@ class Engine:
             if e.type == pg.QUIT or (e.type == pg.KEYDOWN and e.key == pg.K_ESCAPE):
                 pg.quit()
                 sys.exit()
-            if self.program != None:
+            if self.program != None and self.program.camera != None:
                 if self.program.camera.mouse_centering:
                     if e.type == self.program.camera.mce_id:
                         #   set the mouse cursor to be at the center always

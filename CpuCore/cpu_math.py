@@ -344,11 +344,66 @@ def quaternion_rotation_pure(p: np.array, q: np.array, isActive: bool):
 
 """
     Note that the matrices below
-    are column-major compatible except that of the
-    `translate` function
+    have some row-major and some column-major compatible.
+    All the matrix formulas have their column-major and row-major 
+    forms for column-vector and row-vector compatibility respectively.
 """
 
-def rotate_x(a:float) -> np.ndarray:
+def rotate_pitch(a:float) -> np.ndarray:
+    """
+        was named `rotate_x` since it rotates
+        around the pitch-axis, which is most times
+        denoted as the x-axis/vector of the 3D object
+
+        It's more accurately called `rotate_pitch`
+        since it rotates around the pitch axis to 
+        to rotate the x and z components of points
+        but the x component remains unchanged ---
+        so it does not change the pitch-axis but changes
+        the yaw and roll axes 
+
+        Hence, more accurate to name `rotate_pitch`
+        as in to rotate around the `pitch` axis.
+
+        Row-Major Matrix (m) and Row-Vector (v)
+        where m is a d x d matrix
+        and v is a 1 x d vector (1 row, d columns)
+        According to matrix rule for multiplication
+                v * m
+            (1 x d) * (d x d)   <--- dimension representation
+
+        v = (x, y, z)
+        matrix[dxd] = 
+        [
+            [0,0], [0,1], [0,2], [0,3],
+            [1,0], [1,1], [1,2], [1,3],
+            [2,0], [2,1], [2,2], [2,3],
+            [3,0], [3,1], [3,2], [3,3],
+        ]
+        
+        The inner parts of the dimension representation must match
+        This is needed for the (across vector) x (down matrix) multiplication rule
+        Note how below, we go across the vector v, and add the multiplications
+        of its components with the values gotten from going down the matrix
+        v' = v * m
+        v' = transformed v 
+        = [ v.x * m[0,0] + v.y * m[1,0] + v.z * m[2,0] + v.w * m[3,0],   #   note x stays the same
+            v.x * m[0,1] + v.y * m[1,1] + v.z * m[2,1] + v.w * m[3,1],  #   y val changes
+            v.x * m[0,2] + v.y * m[1,2] + v.z * m[2,2] + v.w * m[3,2],  #   z val changes
+            v.x * m[0,3] + v.y * m[1,3] + v.z * m[2,3] + v.w * m[3,3],          #   a filler
+            ]
+        = [ v.x * 1.0 + v.y * 0.0 + v.z * 0.0 + v.w * 0.0,   #   note x stays the same
+            v.x * 0.0 + v.y * cos(a) + v.z * sin(a) + v.w * 0.0,  #   y val changes
+            v.x * 1.0 + v.y * -sin(a) + v.z * cos(a) + v.w * 0.0,  #   z val changes
+            v.x * 1.0 + v.y * 0.0 + v.z * 0.0 + v.w * 1.0,          #   a filler
+            ]
+        
+        >   Note! m[row, col]
+        v', the resulting transformed vector has the resulting dimension, (1 x d)
+        which is selected from the outer parts of the two operands' outer dimensions
+        >   Operands are the vector, v (1 x d), and matrix m (d x d)
+        Note how its dimension is the same as the operand vector, v
+    """
     return np.array([
         [1.0, 0.0, 0.0, 0.0],
         [0.0, np.cos(a), np.sin(a), 0.0],
@@ -356,10 +411,83 @@ def rotate_x(a:float) -> np.ndarray:
         [0.0, 0.0, 0.0, 1.0]
     ])
 
-def rotate_x_column_major(a:float):
-    return rotate_x(a).transpose()
 
-def rotate_y(a:float) -> np.ndarray:
+def rotate_pitch_column_major(a:float):
+    """
+        Then for the column-major version
+
+        Column-Major matrix (m) and Column-Vector (v)
+        where m is a d x d matrix
+        and v is a d x 1 vector (d rows, 1 column)
+        According to the matrix rule for multiplication,
+        the inner parts must match. So the order of multiplication
+        must change:
+                m * v
+            (d x d) * (d x 1)
+        v= [
+            [x],
+            [y],
+            [z]
+            ]
+
+        matrix[dxd] = 
+        [
+            [0,0], [0,1], [0,2], [0,3],
+            [1,0], [1,1], [1,2], [1,3],
+            [2,0], [2,1], [2,2], [2,3],
+            [3,0], [3,1], [3,2], [3,3],
+        ]
+        The effect of this order of multiplication
+        and the fact that the column-major matrix is the transposed
+        form of the row-major matrix, gives the same transformation:
+
+        v', the resulting transformed vector will have the dimension, (d x 1),
+        from the outer parts of the two operands' outer dimensions
+        and the same dimension as the operand vector, v (d x 1).
+
+        Consider that now, the multiplication procedure involves
+        going across each row of the matrix and multiplying it with each value
+        gotten from going down the vector, v, and summing the values, for
+        each component of the resulting vector, v'
+
+        v' = m * v
+        = [ m[0,0] * v.x + m[0,1] * v.y + m[0,2] * v.z + m[0,3] * v.w,   #   note x stays the same
+            m[1,0] * v.x + m[1,1] * v.y + m[1,2] * v.z + m[1,3] * v.w,  #   y val changes
+            m[2,0] * v.x + m[2,1] * v.y + m[2,2] * v.z + m[2,3] * v.w,  #   z val changes
+            m[3,0] * v.x + m[3,1] * v.y + m[3,2] * v.z + m[3,3] * v.w,          #   a filler
+            ]
+        = [ 1.0 * v.x + 0.0     * v.y  +  0.0 +  * v.z  +  0.0 * v.w,   #   note x stays the same
+            0.0 * v.x + cos(a)  * v.y  +  -sin(a) * v.z  +  0.0 * v.w,  #   y val changes
+            1.0 * v.x + sin(a) * v.y  +  cos(a) * v.z  +  0.0 * v.w,  #   z val changes
+            1.0 * v.x + 0.0     * v.y  +  0.0 +  * v.z  +  1.0 * v.w,          #   a filler
+            ]
+        >   NOte how, because of the transpose, the resulting vector of the column-major
+        multiplication is the same as with that of the row-major.
+
+        Without the transpose, for example,  
+    """
+    """
+        return  np.array([
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, np.cos(a), -np.sin(a), 0.0],
+        [0.0, np.sin(a), np.cos(a), 0.0],
+        [0.0, 0.0, 0.0, 1.0]
+    ])
+    """
+    return rotate_roll(a).transpose()
+
+def rotate_yaw(a:float) -> np.ndarray:
+    """
+        was previously called `rotate_y`,
+        but whether to use x, y, or z is subjective.
+
+        Hence, more accurate to name `rotate_yaw`
+        as in to rotate around the `yaw` axis.
+
+        This means the yaw-axis itself remains unchanged
+        but rotates the roll and pitch axes, causing
+        only the x and z components of the points to change
+    """
     return np.array([
         [np.cos(a), 0.0, -np.sin(a), 0.0],
         [0.0, 1.0, 0.0, 0.0],
@@ -367,10 +495,25 @@ def rotate_y(a:float) -> np.ndarray:
         [0.0, 0.0, 0.0, 1.0]
     ])
 
-def rotate_y_column_major(a:float):
-    return rotate_y(a).transpose()
+def rotate_yaw_column_major(a:float):
+    return rotate_yaw(a).transpose()
 
-def rotate_z(a:float):
+def rotate_roll(a:float):
+    """
+        was called `rotate_z` but more
+        accurately called `rotate_roll`
+        since it rotates the points of
+        the 3D object around the roll axis,
+        making the roll axis unchanged
+        but changing the pitch and yaw axis
+        of the 3D object, hence only modifying the
+        y and z components of the 3D object's
+        points.
+
+
+        Hence, more accurate to name `rotate_roll`
+        as in to rotate around the `roll` axis.
+    """
     return np.array([
         [np.cos(a), np.sin(a), 0.0, 0.0],
         [-np.sin(a), np.cos(a), 0.0, 0.0],
@@ -378,8 +521,8 @@ def rotate_z(a:float):
         [0.0, 0.0, 0.0, 1.0]
     ])
 
-def rotate_z_column_major(a:float):
-    return rotate_z(a).transpose()
+def rotate_roll_column_major(a:float):
+    return rotate_pitch(a).transpose()
 
 def translate(pos:list[float,float,float]):
     tx, ty, tz = pos

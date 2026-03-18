@@ -13,6 +13,7 @@ class Program:
     def __init__(self, EngineRef, SurfRes:tuple=(100, 100)):
         self.engine_ref = EngineRef
         self.layer =  Surface(SurfRes)
+        self.camera = None
         ...
     
     
