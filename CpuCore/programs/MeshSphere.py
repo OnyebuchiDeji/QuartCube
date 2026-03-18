@@ -68,7 +68,7 @@ class MeshSphere(Program):
         """
             Draws sphere using longitude and latitude angles
         """
-        self.draw_sphere_v3(resolution=40)
+        self.draw_sphere_v3(resolution=40, resStep=2)
 
 
     def draw_triangle(self, verts: list[tuple[float, float]], color=(255,255,255), fill=3):
@@ -112,7 +112,7 @@ class MeshSphere(Program):
                 #   Correct
                 self.sphere_verts.append(Vec([x, y, z]))
 
-    def draw_sphere_v3(self, resolution:int = 40):
+    def draw_sphere_v3(self, resolution:int = 40, resStep):
         """
             Draws Triangle Mesh with 2 Triangle Strips
             and applies depth culling.
@@ -131,7 +131,7 @@ class MeshSphere(Program):
         #   of triangle strips drawn and hence
         #   improve performance
         ##########################
-        res_step = 2
+        res_step = resStep
         for idx in range(0, resolution, res_step):
             for idy in range(0, resolution, res_step):
 
@@ -189,7 +189,7 @@ class MeshSphere(Program):
                     self.draw_triangle([(v[0] , v[1]) for v in tri_verts1], fill=2)
                     self.draw_triangle([(v[0] , v[1]) for v in tri_verts2], fill=2)
 
-    def draw_sphere_v2(self, resolution:int = 40):
+    def draw_sphere_v2(self, resolution:int = 40, resStep):
         """
             Draws Triangle Mesh with 2 Triangle Strips
         """
@@ -205,7 +205,7 @@ class MeshSphere(Program):
         #   of triangle strips drawn and hence
         #   improve performance
         ##########################
-        res_step = 3
+        res_step = resStep
         for idx in range(0, resolution, res_step):
             for idy in range(0, resolution, res_step):
 

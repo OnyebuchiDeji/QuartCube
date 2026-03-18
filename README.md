@@ -36,7 +36,8 @@ Exploring Controlling a 3D Cube with Quaternions
     -   `Mesh Sphere`: 
         *   Drew sphere with triangle meshes.
         *   Fixed the longitudinal and latitudinal ranges and angles for solving points on the sphere.
-
+    -   References:
+        The Coding Train (2016), "Coding Challenge 25: Spherical Gemoetry". 29 June [Youtube]. Available at: 'https://www.youtube.com/watch?v=RkuBWEkBrZA&t=121s' 
 ###	Setup
 1.	Create and activate virtual environment (Windows):
 	*	Create:	`python -m venv <your_virtual_environment>`
@@ -83,3 +84,13 @@ Exploring Controlling a 3D Cube with Quaternions
 ![Image 8](./_screenshots/ss_7.png)
 ![Image 9](./_screenshots/ss_8.png)
 ![Image 10](./_screenshots/ss_9.png)
+![Image 11](./_screenshots/ss_10.png)
+![Image 12](./_screenshots/ss_11.png)
+![Image 13](./_screenshots/ss_12.png)
+![Image 14](./_screenshots/ss_13.png)
+![Image 15](./_screenshots/ss_14.png)
+![Image 16](./_screenshots/ss_15.png)
+![Image 17](./_screenshots/ss_16.png)
+![Image 18](./_screenshots/ss_17.png)
+![Image 19](./_screenshots/ss_18.png)
+![Image 20](./_screenshots/ss_19.png)
