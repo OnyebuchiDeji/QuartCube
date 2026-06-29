@@ -1,10 +1,12 @@
+#####   18-03-2026
+
 #	QuartCube
 
-
-###	Why
 Exploring Controlling a 3D Cube with Quaternions
 
-###	What 
+### Key Features
+
+#### Key Features: Implementations
 +	Initially planned to consist of two main methods for rendering the Cube.
 +	Each method demonstrates a unique way of drawing the 3D Cube:
 	1.	CPU-only
@@ -22,7 +24,7 @@ Exploring Controlling a 3D Cube with Quaternions
 +	To demonstrate rotating Cube using quaternions, the Key-Controlled Look At Direction Camera was used. The quaternions were used to modify the cube's orientation in real-time.
 +	The methods utilizing just Euclidean formulas where used to predefine the cube's orientaion before rendering.
 
-### Update
+###   Key Features; Updates
 +   Made updates to the rotation functions, ensuring to name them properly according to the axes they rotate.
 +   Made updates to other Programs ensuring their angles were in radians before passing to a quaternion or euclidean rotational function.
 +   Explained Column-Vector x Column-Major vs Row-Vector x Row-Major matrices.
@@ -38,7 +40,11 @@ Exploring Controlling a 3D Cube with Quaternions
         *   Fixed the longitudinal and latitudinal ranges and angles for solving points on the sphere.
     -   References:
         The Coding Train (2016), "Coding Challenge 25: Spherical Gemoetry". 29 June [Youtube]. Available at: 'https://www.youtube.com/watch?v=RkuBWEkBrZA&t=121s' 
-###	Setup
+
+---
+
+###	Setup Instructions
+
 1.	Create and activate virtual environment (Windows):
 	*	Create:	`python -m venv <your_virtual_environment>`
 		-	replace '<your_virtual_environment>' with the name of your environment
@@ -72,25 +78,55 @@ Exploring Controlling a 3D Cube with Quaternions
 
 >    (To Me) Used the chance to practice Git Hooks.
 
+---
+
+### Architecture Diagram
+
+```
+QuartCube/
+ ├── _project_diagram.txt
+ ├── requirements.txt
+ ├── README.md
+ ├── main.py
+ ├── LICENSE
+ ├── GpuCore/
+ ├── CpuCore/
+ │  ├── __init__.py
+ │  ├── programs/
+ │  ├── _program.py
+ │  ├── QuartCube2.py
+ │  ├── QuartCube.py
+ │  ├── MeshSphere.py
+ │  ├── LastCube.py
+ │  ├── FirstSphere.py
+ │  └── FirstCube.py
+ │  ├── cpu_math.py
+ │  ├── cpu_graphics.py
+ │  ├── cpu_engine.py
+ │  └── cpu_core.py
+ ├── .pddignore
+ └── .gitignore 
+```
+
 ###	Screenshots
 
-![Image 1](./_screenshots/ss_0.png)
-![Image 2](./_screenshots/ss_1.png)
-![Image 3](./_screenshots/ss_2.png)
-![Image 4](./_screenshots/ss_3.png)
-![Image 5](./_screenshots/ss_4.png)
-![Image 6](./_screenshots/ss_5.png)
-![Image 7](./_screenshots/ss_6.png)
-![Image 8](./_screenshots/ss_7.png)
-![Image 9](./_screenshots/ss_8.png)
-![Image 10](./_screenshots/ss_9.png)
-![Image 11](./_screenshots/ss_10.png)
-![Image 12](./_screenshots/ss_11.png)
-![Image 13](./_screenshots/ss_12.png)
-![Image 14](./_screenshots/ss_13.png)
-![Image 15](./_screenshots/ss_14.png)
-![Image 16](./_screenshots/ss_15.png)
-![Image 17](./_screenshots/ss_16.png)
-![Image 18](./_screenshots/ss_17.png)
-![Image 19](./_screenshots/ss_18.png)
-![Image 20](./_screenshots/ss_19.png)
+![Image 1](./_scrnshots/ss_0.png)
+![Image 2](./_scrnshots/ss_1.png)
+![Image 3](./_scrnshots/ss_2.png)
+![Image 4](./_scrnshots/ss_3.png)
+![Image 5](./_scrnshots/ss_4.png)
+![Image 6](./_scrnshots/ss_5.png)
+![Image 7](./_scrnshots/ss_6.png)
+![Image 8](./_scrnshots/ss_7.png)
+![Image 9](./_scrnshots/ss_8.png)
+![Image 10](./_scrnshots/ss_9.png)
+![Image 11](./_scrnshots/ss_10.png)
+![Image 12](./_scrnshots/ss_11.png)
+![Image 13](./_scrnshots/ss_12.png)
+![Image 14](./_scrnshots/ss_13.png)
+![Image 15](./_scrnshots/ss_14.png)
+![Image 16](./_scrnshots/ss_15.png)
+![Image 17](./_scrnshots/ss_16.png)
+![Image 18](./_scrnshots/ss_17.png)
+![Image 19](./_scrnshots/ss_18.png)
+![Image 20](./_scrnshots/ss_19.png)

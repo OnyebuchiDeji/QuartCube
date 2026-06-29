@@ -1,0 +1,23 @@
+QuartCube/
+ ├── _project_diagram.txt
+ ├── requirements.txt
+ ├── README.md
+ ├── main.py
+ ├── LICENSE
+ ├── GpuCore/
+ ├── CpuCore/
+ │	├── __init__.py
+ │	├── programs/
+ │	├── _program.py
+ │	├── QuartCube2.py
+ │	├── QuartCube.py
+ │	├── MeshSphere.py
+ │	├── LastCube.py
+ │	├── FirstSphere.py
+ │	└── FirstCube.py
+ │	├── cpu_math.py
+ │	├── cpu_graphics.py
+ │	├── cpu_engine.py
+ │	└── cpu_core.py
+ ├── .pddignore
+ └── .gitignore
