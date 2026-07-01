@@ -115,7 +115,7 @@ class MeshSphere(Program):
     def draw_sphere_v3(self, resolution:int = 40, resStep):
         """
             Draws Triangle Mesh with 2 Triangle Strips
-            and applies depth culling.
+            and applies back-face culling.
             That is, dont' draw vertices of faces that
             are behind others
         """

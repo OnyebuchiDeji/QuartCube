@@ -160,7 +160,7 @@ class LastCube(Program):
             
             """
                 must apply model w transform on points first
-                before depth culling! if a triangle's normal is not aligned
+                before back-face culling! if a triangle's normal is not aligned
                 to the camera's forward vecctor, don't append that triangle's points
             """
             should_draw = False

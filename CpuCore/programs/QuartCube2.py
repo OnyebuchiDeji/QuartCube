@@ -146,7 +146,7 @@ class QuartCube2(Program):
             has appeared to be the best.
 
             The conclusion was reached after noticing that even after applying
-            a model-view transform before depth culling, errors occured.
+            a model-view transform before back-face culling, errors occured.
 
             The second-best is applying all mvp transforms before depth-culling 
             as that didn't cause any issues with the rendering of triangles!
@@ -162,7 +162,7 @@ class QuartCube2(Program):
             
             """
                 must apply model w transform on points first
-                before depth culling! if a triangle's normal is not aligned
+                before back-face culling! if a triangle's normal is not aligned
                 to the camera's forward vecctor, don't append that triangle's points
             """
             should_draw = False

@@ -1,0 +1,132 @@
+<project_title>QuartCube, by Ebenezer Ayo, Khaylemsoft</project_title>
+
+<short_description>
+Exploring Controlling a 3D Cube with Quaternions
+</short_description>
+
+###  Live Demo Here:
+<live_link></live_link>
+
+<github_link>https://github.com/OnyebuchiDeji/QuartCube</github_link>
+
+<references>
+</ul>
+</li>
+<li>References:
+    The Coding Train (2016), "Coding Challenge 25: Spherical Gemoetry". 29 June [Youtube]. Available at: 'https://www.youtube.com/watch?v=RkuBWEkBrZA&amp;t=121s' </li>
+</ul>
+</references>
+
+
+<long_description>
+
+<h5>18-03-2026</h5>
+<h1>QuartCube</h1>
+<p>Exploring Controlling a 3D Cube with Quaternions</p>
+<h3>Key Features</h3>
+<h4>Key Features: Implementations</h4>
+<ul>
+<li>Initially planned to consist of two main methods for rendering the Cube.</li>
+<li>Each method demonstrates a unique way of drawing the 3D Cube:<ol>
+<li>CPU-only</li>
+<li>with GPU</li>
+</ol>
+</li>
+<li>Managed to render Cube with CPU only</li>
+<li>Managed to setup framework for manipulating view of cube using keys and mouse.</li>
+<li>The afore-mentioned framework involves the use of a Camera, and hence a View Matrxi, and a Projection Matrix.</li>
+<li>Cameras:<ul>
+<li>Two Types were created:<ol>
+<li>First Person Shooter-like camera</li>
+<li>Key-Controlled Look At Direction Camera.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Explored affine transformation matrices, both row-vector-compatible types and their major-vector-compatible counterparts. </li>
+<li>Implemented rotating cube around its axis (with functionality of rotating about custom axes), using Eulclidean methods. Implemented conditions against Gimbal lock.</li>
+<li>Implemented rotating cube around its axis (and custom axes) using quaternions. This method is immune to Gimbal lock. </li>
+<li>To demonstrate rotating Cube using quaternions, the Key-Controlled Look At Direction Camera was used. The quaternions were used to modify the cube's orientation in real-time.</li>
+<li>The methods utilizing just Euclidean formulas where used to predefine the cube's orientaion before rendering.</li>
+</ul>
+<h3>Key Features; Updates</h3>
+<ul>
+<li>Made updates to the rotation functions, ensuring to name them properly according to the axes they rotate.</li>
+<li>Made updates to other Programs ensuring their angles were in radians before passing to a quaternion or euclidean rotational function.</li>
+<li>Explained Column-Vector x Column-Major vs Row-Vector x Row-Major matrices.</li>
+<li>Added functionality to draw spheres procedurally CPU-only</li>
+<li>Added a Radial Camera that can rotate the scene around the origin and can zoom-in and zoom-out.</li>
+<li>Created two sphere generation programs:<ul>
+<li><code>FirstSphere</code>: Attempts to generate 3D perspective-accurate sphere. Managed to generate orthographic and perspective versions.<ul>
+<li>Sphere was drawn with points</li>
+<li>Resolution parameters were provided</li>
+<li>There were some errors, though, in the longitudinal and latitudinal angles for the sphere/</li>
+</ul>
+</li>
+<li><code>Mesh Sphere</code>: <ul>
+<li>Drew sphere with triangle meshes.</li>
+<li>Fixed the longitudinal and latitudinal ranges and angles for solving points on the sphere.</li>
+</ul>
+</li>
+<li>References:
+    The Coding Train (2016), "Coding Challenge 25: Spherical Gemoetry". 29 June [Youtube]. Available at: 'https://www.youtube.com/watch?v=RkuBWEkBrZA&amp;t=121s' </li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>Setup Instructions</h3>
+<ol>
+<li>
+<p>Create and activate virtual environment (Windows):</p>
+<ul>
+<li>Create: <code>python -m venv &lt;your_virtual_environment&gt;</code><ul>
+<li>replace '<your_virtual_environment>' with the name of your environment</li>
+</ul>
+</li>
+<li>Activate: <code>&lt;your_virtual_environment&gt;/Scripts/activate.bat</code>.</li>
+</ul>
+</li>
+<li>
+<p>Install requirements: <code>pip install -r requirements.txt</code></p>
+</li>
+<li>
+<p>In directory with file <code>main.py</code>. Run, <code>python main.py</code></p>
+</li>
+<li>
+<p>Run Different Cases:</p>
+<ul>
+<li>In the file './CpuCore/cpu_core.py', you'll see these lines of code:
+<code>python
+    # self.fc = FirstCube(self.eng)
+    # self.qc = QuartCube(self.eng)
+    self.qc2 = QuartCube2(self.eng)
+    # self.lc = LastCube(self.eng)
+    self.eng.program = self.qc2</code></li>
+<li>To test the different Test Cases, uncomment a single of the cases between these:<ul>
+<li><code>self.fc</code>, <code>self.qc</code>, <code>self.qc2</code>, <code>self.l</code><ul>
+<li><code>self.lc</code> is a correction of <code>self.fc</code> that demonstrates the FPS Camera and initial rotation and translation of cube.</li>
+<li><code>self.qc2</code> is like that of <code>self.qc</code>, but uses an improved/more efficient method for quaternion rotation.<ul>
+<li>The former uses a better method that directly calculates the new quaternions from product of rotation quaternions about different axes, and then directly multiplying the resulting quaternion with the 3D point to transform it.</li>
+<li>In contrast, the latter uses a previous method that first converts each quaternion into its corresponding rotation matrix, then multiplying the matrices into the final matrix, and using that matrix to convert the Cube's Model Matrix which is then used in the rendering call (the <code>draw</code> method) to modify the Cube's points in real-time. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Then change which of those chosen above (by uncommenting) to be assigned to <code>self.eng.program</code>.<ul>
+<li>Currently, <code>self.qc2</code> is assigned to it.</li>
+<li>Change that to be the name of whichever you want to test.<blockquote>
+<p>Notice that the mouse is hidden. And from tinkering, you'll see that its
+regularly repositioned to be in the centre. </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+</long_description>
+
+<features>desktop app, graphics programming, python, moderngl</features>
